@@ -1,0 +1,382 @@
+.recipe-finder {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+}
+
+/* Search Form */
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #667eea;
+}
+
+.search-button {
+  padding: 12px 30px;
+  font-size: 1rem;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+.search-button:hover {
+  background-color: #5568d3;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-counter {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.favorites-counter strong {
+  color: #e74c3c;
+  font-size: 1.3rem;
+}
+
+.vegetarian-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.vegetarian-filter input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading p {
+  color: white;
+  font-size: 1.1rem;
+}
+
+/* Error State */
+.error {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fee;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.error p {
+  color: #e74c3c;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+/* Recipe Grid */
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* Recipe Card */
+.recipe-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Recipe Image */
+.recipe-image-container {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vegetarian-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #27ae60;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Recipe Header */
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px;
+  gap: 10px;
+}
+
+.recipe-title {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin: 0;
+  flex: 1;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.favorite-button:hover {
+  transform: scale(1.2);
+}
+
+.favorite-button.active {
+  animation: heartbeat 0.3s;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+/* Recipe Meta */
+.recipe-meta {
+  display: flex;
+  gap: 10px;
+  padding: 0 15px 15px;
+}
+
+.badge {
+  background-color: #ecf0f1;
+  color: #34495e;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Details Button */
+.details-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.details-button:hover {
+  background-color: #5568d3;
+}
+
+/* Recipe Details */
+.recipe-details {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-top: 2px solid #e9ecef;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 2000px;
+  }
+}
+
+.ingredients-section,
+.instructions-section {
+  margin-bottom: 20px;
+}
+
+.ingredients-section h4,
+.instructions-section h4 {
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredients-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e9ecef;
+  color: #555;
+}
+
+.ingredients-list li:last-child {
+  border-bottom: none;
+}
+
+.ingredients-list li::before {
+  content: '✓ ';
+  color: #27ae60;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.instructions {
+  line-height: 1.6;
+  color: #555;
+  white-space: pre-line;
+}
+
+.video-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.video-link:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .recipes-grid {
+    grid-template-columns: 1fr;
+  }
+}
